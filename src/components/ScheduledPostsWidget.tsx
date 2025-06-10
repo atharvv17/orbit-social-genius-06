@@ -2,6 +2,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Calendar, Clock, Edit, FileText } from "lucide-react"
+import { Link } from "react-router-dom"
 
 const scheduledPosts = [
   {
@@ -29,9 +30,11 @@ export function ScheduledPostsWidget() {
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle className="text-lg font-semibold">Scheduled Posts</CardTitle>
-        <Button size="sm" className="linkedin-gradient text-white hover:opacity-90">
-          <Calendar className="w-4 h-4 mr-2" />
-          Schedule New
+        <Button size="sm" className="linkedin-gradient text-white hover:opacity-90" asChild>
+          <Link to="/schedule-post">
+            <Calendar className="w-4 h-4 mr-2" />
+            Schedule New
+          </Link>
         </Button>
       </CardHeader>
       <CardContent className="space-y-4">

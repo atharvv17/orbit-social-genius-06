@@ -1,5 +1,16 @@
 
-import { Calendar, BarChart3, Users, FileText, Settings, Zap, Target, Library } from "lucide-react"
+import {
+  Calendar,
+  Home,
+  BarChart3,
+  Users,
+  Settings,
+  PlusCircle,
+  Target,
+  BookOpen,
+} from "lucide-react"
+import { Link, useLocation } from "react-router-dom"
+
 import {
   Sidebar,
   SidebarContent,
@@ -12,27 +23,19 @@ import {
   SidebarHeader,
   SidebarFooter,
 } from "@/components/ui/sidebar"
+import { Button } from "@/components/ui/button"
 
-const menuItems = [
+// Menu items.
+const items = [
   {
     title: "Dashboard",
-    url: "#",
-    icon: BarChart3,
+    url: "/",
+    icon: Home,
   },
   {
-    title: "Schedule Posts",
-    url: "#",
-    icon: Calendar,
-  },
-  {
-    title: "AI Generator",
-    url: "#",
-    icon: Zap,
-  },
-  {
-    title: "Competitor Analysis",
-    url: "#",
-    icon: Target,
+    title: "Schedule Post",
+    url: "/schedule-post",
+    icon: PlusCircle,
   },
   {
     title: "Analytics",
@@ -40,9 +43,14 @@ const menuItems = [
     icon: BarChart3,
   },
   {
+    title: "Competitors",
+    url: "#",
+    icon: Target,
+  },
+  {
     title: "Content Library",
     url: "#",
-    icon: Library,
+    icon: BookOpen,
   },
   {
     title: "Settings",
@@ -52,37 +60,30 @@ const menuItems = [
 ]
 
 export function AppSidebar() {
+  const location = useLocation()
+
   return (
-    <Sidebar className="border-r bg-sidebar">
-      <SidebarHeader className="border-b p-6">
-        <div className="flex items-center gap-3">
+    <Sidebar>
+      <SidebarHeader className="p-4">
+        <div className="flex items-center gap-2">
           <div className="w-8 h-8 linkedin-gradient rounded-lg flex items-center justify-center">
-            <FileText className="w-4 h-4 text-white" />
+            <Users className="w-4 h-4 text-white" />
           </div>
-          <div>
-            <h2 className="text-lg font-semibold">LinkedinAI</h2>
-            <p className="text-xs text-muted-foreground">Social Media Manager</p>
-          </div>
+          <span className="font-bold text-lg">LinkedIn Pro</span>
         </div>
       </SidebarHeader>
-      
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Main Navigation</SidebarGroupLabel>
+          <SidebarGroupLabel>Main</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {menuItems.map((item, index) => (
+              {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton 
-                    asChild
-                    className={`hover:bg-accent hover:text-accent-foreground transition-colors ${
-                      index === 0 ? 'bg-accent text-accent-foreground' : ''
-                    }`}
-                  >
-                    <a href={item.url}>
-                      <item.icon className="w-4 h-4" />
+                  <SidebarMenuButton asChild isActive={location.pathname === item.url}>
+                    <Link to={item.url}>
+                      <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -90,17 +91,11 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      
-      <SidebarFooter className="border-t p-4">
-        <div className="flex items-center gap-3 text-sm text-muted-foreground">
-          <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-            <Users className="w-4 h-4 text-primary-foreground" />
-          </div>
-          <div>
-            <p className="font-medium text-foreground">John Doe</p>
-            <p className="text-xs">Premium Plan</p>
-          </div>
-        </div>
+      <SidebarFooter className="p-4">
+        <Button variant="outline" size="sm" className="w-full">
+          <Settings className="w-4 h-4 mr-2" />
+          Account Settings
+        </Button>
       </SidebarFooter>
     </Sidebar>
   )

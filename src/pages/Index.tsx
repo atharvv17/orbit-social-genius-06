@@ -8,6 +8,7 @@ import { EngagementChart } from "@/components/EngagementChart"
 import { CompetitorAnalysisWidget } from "@/components/CompetitorAnalysisWidget"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Link } from "react-router-dom"
 import { 
   BarChart3, 
   Users, 
@@ -39,9 +40,11 @@ const Index = () => {
                   <Bell className="w-4 h-4 mr-2" />
                   Notifications
                 </Button>
-                <Button size="sm" className="linkedin-gradient text-white hover:opacity-90">
-                  <Plus className="w-4 h-4 mr-2" />
-                  Create Post
+                <Button size="sm" className="linkedin-gradient text-white hover:opacity-90" asChild>
+                  <Link to="/schedule-post">
+                    <Plus className="w-4 h-4 mr-2" />
+                    Create Post
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -95,20 +98,24 @@ const Index = () => {
                   </CardHeader>
                   <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      <Button className="h-auto p-4 flex flex-col items-center gap-2 linkedin-gradient text-white hover:opacity-90">
-                        <Zap className="w-6 h-6" />
-                        <span className="text-sm font-medium">AI Post Generator</span>
-                        <span className="text-xs opacity-90">Create engaging content instantly</span>
+                      <Button className="h-auto p-4 flex flex-col items-center gap-2 linkedin-gradient text-white hover:opacity-90" asChild>
+                        <Link to="/schedule-post">
+                          <Zap className="w-6 h-6" />
+                          <span className="text-sm font-medium">AI Post Generator</span>
+                          <span className="text-xs opacity-90">Create engaging content instantly</span>
+                        </Link>
                       </Button>
                       <Button variant="outline" className="h-auto p-4 flex flex-col items-center gap-2">
                         <Target className="w-6 h-6" />
                         <span className="text-sm font-medium">Analyze Competitors</span>
                         <span className="text-xs text-muted-foreground">Discover what works for others</span>
                       </Button>
-                      <Button variant="outline" className="h-auto p-4 flex flex-col items-center gap-2">
-                        <Calendar className="w-6 h-6" />
-                        <span className="text-sm font-medium">Schedule Posts</span>
-                        <span className="text-xs text-muted-foreground">Plan your content calendar</span>
+                      <Button variant="outline" className="h-auto p-4 flex flex-col items-center gap-2" asChild>
+                        <Link to="/schedule-post">
+                          <Calendar className="w-6 h-6" />
+                          <span className="text-sm font-medium">Schedule Posts</span>
+                          <span className="text-xs text-muted-foreground">Plan your content calendar</span>
+                        </Link>
                       </Button>
                     </div>
                   </CardContent>
