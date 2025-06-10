@@ -9,6 +9,7 @@ import { CompetitorAnalysisWidget } from "@/components/CompetitorAnalysisWidget"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Link } from "react-router-dom"
+import { useState } from "react"
 import { 
   BarChart3, 
   Users, 
@@ -17,14 +18,54 @@ import {
   Zap,
   Target,
   Plus,
-  Bell
+  Bell,
+  Linkedin
 } from "lucide-react"
 
 const Index = () => {
+  const [isLinkedInConnected, setIsLinkedInConnected] = useState(false)
+
+  const handleConnectLinkedIn = () => {
+    // Simulate LinkedIn connection process
+    // In a real app, this would trigger OAuth flow
+    setIsLinkedInConnected(true)
+  }
+
+  if (!isLinkedInConnected) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <Card className="w-full max-w-md mx-4">
+          <CardHeader className="text-center">
+            <div className="w-16 h-16 mx-auto mb-4 bg-[#0077B5] rounded-full flex items-center justify-center">
+              <Linkedin className="w-8 h-8 text-white" />
+            </div>
+            <CardTitle className="text-2xl font-bold">Connect Your LinkedIn</CardTitle>
+            <p className="text-muted-foreground">
+              Connect your LinkedIn account to start managing your posts and analyzing engagement.
+            </p>
+          </CardHeader>
+          <CardContent>
+            <Button 
+              onClick={handleConnectLinkedIn}
+              className="w-full h-12 text-white font-semibold"
+              style={{ backgroundColor: '#0077B5' }}
+            >
+              <Linkedin className="w-5 h-5 mr-3" />
+              Connect LinkedIn
+            </Button>
+            <p className="text-xs text-muted-foreground text-center mt-4">
+              We'll redirect you to LinkedIn to authorize access to your account.
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+    )
+  }
+
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-background">
-        <AppSidebar />
+        <AppSidebar isLinkedInConnected={isLinkedInConnected} />
         
         <main className="flex-1 overflow-auto">
           {/* Header */}

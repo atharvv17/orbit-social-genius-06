@@ -59,8 +59,18 @@ const items = [
   },
 ]
 
-export function AppSidebar() {
+interface AppSidebarProps {
+  isLinkedInConnected?: boolean
+}
+
+export function AppSidebar({ isLinkedInConnected = false }: AppSidebarProps) {
   const location = useLocation()
+
+  const handleDisabledClick = (e: React.MouseEvent) => {
+    if (!isLinkedInConnected) {
+      e.preventDefault()
+    }
+  }
 
   return (
     <Sidebar>
@@ -79,8 +89,15 @@ export function AppSidebar() {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild isActive={location.pathname === item.url}>
-                    <Link to={item.url}>
+                  <SidebarMenuButton 
+                    asChild 
+                    isActive={location.pathname === item.url}
+                    className={!isLinkedInConnected && item.url !== "/" ? "opacity-50 cursor-not-allowed" : ""}
+                  >
+                    <Link 
+                      to={isLinkedInConnected || item.url === "/" ? item.url : "#"}
+                      onClick={handleDisabledClick}
+                    >
                       <item.icon />
                       <span>{item.title}</span>
                     </Link>
@@ -92,7 +109,12 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter className="p-4">
-        <Button variant="outline" size="sm" className="w-full">
+        <Button 
+          variant="outline" 
+          size="sm" 
+          className={`w-full ${!isLinkedInConnected ? "opacity-50 cursor-not-allowed" : ""}`}
+          disabled={!isLinkedInConnected}
+        >
           <Settings className="w-4 h-4 mr-2" />
           Account Settings
         </Button>
