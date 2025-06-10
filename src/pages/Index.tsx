@@ -1,4 +1,3 @@
-
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/AppSidebar"
 import { MetricCard } from "@/components/MetricCard"
@@ -22,9 +21,12 @@ import {
   Linkedin
 } from "lucide-react"
 
-const Index = () => {
-  const [isLinkedInConnected, setIsLinkedInConnected] = useState(false)
+interface IndexProps {
+  isLinkedInConnected: boolean;
+  setIsLinkedInConnected: (connected: boolean) => void;
+}
 
+const Index = ({ isLinkedInConnected, setIsLinkedInConnected }: IndexProps) => {
   const handleConnectLinkedIn = () => {
     // Simulate LinkedIn connection process
     // In a real app, this would trigger OAuth flow

@@ -21,11 +21,23 @@ const App = () => {
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Index />} />
+            <Route 
+              path="/" 
+              element={
+                <Index 
+                  isLinkedInConnected={isLinkedInConnected} 
+                  setIsLinkedInConnected={setIsLinkedInConnected} 
+                />
+              } 
+            />
             <Route 
               path="/schedule-post" 
               element={
-                isLinkedInConnected ? <SchedulePost /> : <Navigate to="/" replace />
+                isLinkedInConnected ? (
+                  <SchedulePost isLinkedInConnected={isLinkedInConnected} />
+                ) : (
+                  <Navigate to="/" replace />
+                )
               } 
             />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

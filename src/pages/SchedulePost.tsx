@@ -11,7 +11,11 @@ import { PostCalendarView } from "@/components/PostCalendarView"
 import { PostListView } from "@/components/PostListView"
 import { Input } from "@/components/ui/input"
 
-const SchedulePost = () => {
+interface SchedulePostProps {
+  isLinkedInConnected: boolean;
+}
+
+const SchedulePost = ({ isLinkedInConnected }: SchedulePostProps) => {
   const [showEditor, setShowEditor] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
   const [activeView, setActiveView] = useState("calendar")
@@ -19,7 +23,7 @@ const SchedulePost = () => {
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-background">
-        <AppSidebar />
+        <AppSidebar isLinkedInConnected={isLinkedInConnected} />
         
         <main className="flex-1 overflow-auto">
           {/* Header */}
