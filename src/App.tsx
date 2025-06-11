@@ -52,6 +52,16 @@ const App = () => {
                 )
               } 
             />
+            <Route 
+              path="/competitors" 
+              element={
+                isLinkedInConnected ? (
+                  <Competitors isLinkedInConnected={isLinkedInConnected} />
+                ) : (
+                  <Navigate to="/" replace />
+                )
+              } 
+            />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
