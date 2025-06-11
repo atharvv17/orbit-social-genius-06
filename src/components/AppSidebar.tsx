@@ -49,7 +49,7 @@ const items = [
   },
   {
     title: "Content Library",
-    url: "#",
+    url: "/content-library",
     icon: BookOpen,
   },
   {
