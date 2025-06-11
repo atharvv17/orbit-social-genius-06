@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
 import Index from "./pages/Index";
 import SchedulePost from "./pages/SchedulePost";
+import Analytics from "./pages/Analytics";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -35,6 +36,16 @@ const App = () => {
               element={
                 isLinkedInConnected ? (
                   <SchedulePost isLinkedInConnected={isLinkedInConnected} />
+                ) : (
+                  <Navigate to="/" replace />
+                )
+              } 
+            />
+            <Route 
+              path="/analytics" 
+              element={
+                isLinkedInConnected ? (
+                  <Analytics isLinkedInConnected={isLinkedInConnected} />
                 ) : (
                   <Navigate to="/" replace />
                 )
