@@ -44,7 +44,7 @@ const items = [
   },
   {
     title: "Competitors",
-    url: "#",
+    url: "/competitors",
     icon: Target,
   },
   {

@@ -8,6 +8,7 @@ import { useState } from "react";
 import Index from "./pages/Index";
 import SchedulePost from "./pages/SchedulePost";
 import Analytics from "./pages/Analytics";
+import Competitors from "./pages/Competitors";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();

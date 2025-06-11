@@ -43,7 +43,7 @@ export function EngagementBreakdownChart() {
                 borderRadius: '6px',
                 fontSize: '12px'
               }}
-              formatter={(value, name) => [
+              formatter={(value: number, name: string) => [
                 `${value} (${((value / total) * 100).toFixed(1)}%)`,
                 name
               ]}
