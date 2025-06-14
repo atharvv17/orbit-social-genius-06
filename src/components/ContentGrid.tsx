@@ -112,7 +112,7 @@ export function ContentGrid({ filter, searchQuery, filters, selectedPosts, onPos
     const variants = {
       draft: "secondary",
       scheduled: "default",
-      published: "success",
+      published: "default", // Changed from "success" to "default"
       "ai-suggestion": "outline"
     } as const
 

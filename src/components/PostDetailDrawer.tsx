@@ -38,7 +38,7 @@ export function PostDetailDrawer({ post, isOpen, onClose }: PostDetailDrawerProp
     const variants = {
       draft: "secondary",
       scheduled: "default", 
-      published: "success",
+      published: "default", // Changed from "success" to "default"
       "ai-suggestion": "outline"
     } as const
 
