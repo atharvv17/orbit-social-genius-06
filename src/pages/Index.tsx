@@ -1,3 +1,4 @@
+
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/AppSidebar"
 import { MetricCard } from "@/components/MetricCard"
@@ -8,7 +9,6 @@ import { CompetitorAnalysisWidget } from "@/components/CompetitorAnalysisWidget"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Link } from "react-router-dom"
-import { useState } from "react"
 import { 
   BarChart3, 
   Users, 
@@ -23,16 +23,9 @@ import {
 
 interface IndexProps {
   isLinkedInConnected: boolean;
-  setIsLinkedInConnected: (connected: boolean) => void;
 }
 
-const Index = ({ isLinkedInConnected, setIsLinkedInConnected }: IndexProps) => {
-  const handleConnectLinkedIn = () => {
-    // Simulate LinkedIn connection process
-    // In a real app, this would trigger OAuth flow
-    setIsLinkedInConnected(true)
-  }
-
+const Index = ({ isLinkedInConnected }: IndexProps) => {
   if (!isLinkedInConnected) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
@@ -48,7 +41,6 @@ const Index = ({ isLinkedInConnected, setIsLinkedInConnected }: IndexProps) => {
           </CardHeader>
           <CardContent>
             <Button 
-              onClick={handleConnectLinkedIn}
               className="w-full h-12 text-white font-semibold"
               style={{ backgroundColor: '#0077B5' }}
             >

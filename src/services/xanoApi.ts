@@ -1,6 +1,6 @@
 
 // Xano API configuration and base functions
-const XANO_BASE_URL = 'https://your-workspace-id.us-east-1.xano.io/api:version/'; // Replace with your actual Xano workspace URL
+const XANO_BASE_URL = 'https://x8ki-letl-twmt.n7.xano.io/api:1epJdnMd/';
 
 interface XanoResponse<T> {
   data?: T;
